@@ -1,5 +1,11 @@
+import { Button } from "@/components/ui/button";
+
 const SignInForm = () => {
-  return <div>this is the sign in form that we will develop in the future</div>;
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
 };
 
 export default SignInForm;
