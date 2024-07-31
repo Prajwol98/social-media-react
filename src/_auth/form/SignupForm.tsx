@@ -15,6 +15,7 @@ import { signInFormValidation } from "@/lib/validation";
 import { z } from "zod";
 import Loader from "@/components/shared/Loader";
 import { Link } from "react-router-dom";
+import { createUserAccount } from "@/lib/appwrite/api";
 
 const SignupForm = () => {
   const form = useForm<z.infer<typeof signInFormValidation>>({
@@ -28,7 +29,8 @@ const SignupForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof signInFormValidation>) {
-    // await createSecureServer(value);
+    const newUser = await createUserAccount(values);
+    console.log(newUser);
   }
   const isLoading = false;
 
@@ -117,7 +119,7 @@ const SignupForm = () => {
             )}
           />
           <Button type="submit" className="shad-button_primary w-full">
-            {isLoading ? <Loader></Loader> : "sign-up"}
+            {isLoading ? <Loader></Loader> : "Sign up"}
           </Button>
           <p>
             Already have an account ?
@@ -125,7 +127,7 @@ const SignupForm = () => {
               to="/sign-in"
               className="ml-2 text-light-3 hover:text-light-4"
             >
-              sign-in
+              Sign in
             </Link>
           </p>
         </form>
