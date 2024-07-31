@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -31,15 +30,20 @@ const SignupForm = () => {
   }
 
   return (
-    <div className="flex flex-col">
-      <div>
-        <img src="/assets/images/logo.svg" alt="img" />
-      </div>
-      <Form {...form}>
+    <Form {...form}>
+      <div className="flex flex-col justify-center ">
+        <img src="/public/assets/images/logo.svg" alt="img" />
+        <h2 className="h3-bold md:h2-bold pt-5 sm:pt-5">
+          Create a new account
+        </h2>
+        <p className="text-light-3 small-medium md:base-regular sm:mb-5">
+          To use snapgram enter your detail
+        </p>
+
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
-            name="username"
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Name</FormLabel>
@@ -57,13 +61,14 @@ const SignupForm = () => {
           />
           <FormField
             control={form.control}
-            name="password"
+            name="username"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
                   <Input
                     type="text"
+                    className="shad-input"
                     placeholder="Enter your username"
                     {...field}
                   />
@@ -81,7 +86,8 @@ const SignupForm = () => {
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="enter your password"
+                    className="shad-input"
+                    placeholder="Enter your password"
                     {...field}
                   />
                 </FormControl>
@@ -98,6 +104,7 @@ const SignupForm = () => {
                 <FormControl>
                   <Input
                     type="email"
+                    className="shad-input"
                     placeholder="Enter your Email"
                     {...field}
                   />
@@ -108,8 +115,8 @@ const SignupForm = () => {
           />
           <Button type="submit">Submit</Button>
         </form>
-      </Form>
-    </div>
+      </div>
+    </Form>
   );
 };
 
