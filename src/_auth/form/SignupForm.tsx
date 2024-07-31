@@ -13,6 +13,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { signInFormValidation } from "@/lib/validation";
 import { z } from "zod";
+import Loader from "@/components/shared/Loader";
+import { Link } from "react-router-dom";
 
 const SignupForm = () => {
   const form = useForm<z.infer<typeof signInFormValidation>>({
@@ -25,9 +27,10 @@ const SignupForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof signInFormValidation>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof signInFormValidation>) {
+    // await createSecureServer(value);
   }
+  const isLoading = false;
 
   return (
     <Form {...form}>
@@ -40,7 +43,7 @@ const SignupForm = () => {
           To use snapgram enter your detail
         </p>
 
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
             name="name"
@@ -113,7 +116,18 @@ const SignupForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="shad-button_primary w-full">
+            {isLoading ? <Loader></Loader> : "sign-up"}
+          </Button>
+          <p>
+            Already have an account ?
+            <Link
+              to="/sign-in"
+              className="ml-2 text-light-3 hover:text-light-4"
+            >
+              sign-in
+            </Link>
+          </p>
         </form>
       </div>
     </Form>
