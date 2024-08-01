@@ -30,8 +30,10 @@ const SignupForm = () => {
 
   async function onSubmit(values: z.infer<typeof signInFormValidation>) {
     const newUser = await createUserAccount(values);
-    console.log(newUser);
+
+    // console.log(newUser);
   }
+
   const isLoading = false;
 
   return (
